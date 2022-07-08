@@ -26,3 +26,5 @@ Aqui você verá um ponto importante e bem de alto nível. O seu desafio será d
 ### DIA 7
 No sétimo e último dia do desafio, você terá a possibilidade de ordenar a sua lista com base em diferentes atributos, utilizando a classe Collections e as interfaces Comparable e Comparator. Você irá fechar com chave de ouro!
 
+## Como Rodar o Projeto
+Basta compilar e executar o arquivo `App.java` via linha de comando, passando o argumento `API_KEY=sua_chave_do_imdb`.
