@@ -9,7 +9,13 @@ import java.net.http.HttpResponse.BodyHandlers;
 
 public abstract class API {
 
-    public static String validateKey(String key) throws Exception {
+    public static String validateKey(String[] args) throws Exception {
+        if (args.length != 1) {
+            throw new Exception("Missing API_KEY argument");
+        }
+
+        String key = args[0];
+
         if (!key.startsWith("API_KEY=")) {
             throw new Exception("Missing API_KEY argument");
         }
@@ -31,6 +37,7 @@ public abstract class API {
 
         try {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
             return DataParser.getData(response.body());
         } catch (IOException | InterruptedException e) {
             throw new Exception("Error connecting to API");
