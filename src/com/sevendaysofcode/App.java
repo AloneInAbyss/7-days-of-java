@@ -1,5 +1,7 @@
 package com.sevendaysofcode;
 
+import java.io.PrintStream;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -17,7 +19,9 @@ public class App {
 
         final String resp = API.connect(url);
 
-        System.out.println(resp);
+        try (PrintStream ps = new PrintStream("result.json")) {
+            ps.print(resp);
+        }
 
     }
 }
