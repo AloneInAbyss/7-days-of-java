@@ -1,6 +1,6 @@
 package com.sevendaysofcode;
 
-import java.io.PrintStream;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -19,9 +19,13 @@ public class App {
 
         final String resp = API.connect(url);
 
-        try (PrintStream ps = new PrintStream("result.json")) {
-            ps.print(resp);
-        }
+        final String[] movies = DataParser.getData(resp);
+        final List<String> titles = DataParser.getAttribute(movies, "title");
+        final List<String> images = DataParser.getAttribute(movies, "image");
+
+        WriteOutput.write(resp, "response.json");
+        WriteOutput.write(titles, "titles.txt");
+        WriteOutput.write(images, "images.txt");
 
     }
 }

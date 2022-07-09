@@ -1,3 +1,7 @@
+# Directories
 bin/
 .vscode/
+output/
+
+# Files
 .env
