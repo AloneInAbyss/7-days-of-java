@@ -22,7 +22,8 @@ public abstract class API {
         return splittedKey[1];
     }
 
-    public static String connect(String url) throws Exception {
+    public static String[] getTopMovies(String key) throws Exception {
+        String url = "https://imdb-api.com/en/API/Top250Movies/" + key;
         URI uri = URI.create(url);
 
         HttpClient client = HttpClient.newBuilder().build();
@@ -30,7 +31,7 @@ public abstract class API {
 
         try {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            return response.body();
+            return DataParser.getData(response.body());
         } catch (IOException | InterruptedException e) {
             throw new Exception("Error connecting to API");
         }
